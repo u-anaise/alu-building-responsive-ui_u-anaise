@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Finance Tracker</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="module" src="scripts/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">Student Finance Tracker</h1>
+      <nav aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#records">Records</a></li>
+          <li><a href="#add">Add</a></li>
+          <li><a href="#settings">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section id="about" class="view" aria-labelledby="about-title">
+      <h2 id="about-title">About</h2>
+      <p>This is a student finance tracker site</p>
+      <p>Contact me on: <a href="https://github.com/u-anaise">Github</a> or <a href="mailto:a.umugwanez@alustudent.com">email me</a></p>
+    </section>
+    <section id="dashboard" class="view" aria-labelledby="dasboard-title">
+      <h2 id="dashboard-title">Dashboard</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>Total Records</h3>
+            <p class="stat-value" id="stat-count">2</p>
+          </div>
+          <div class="stat-card">
+            <h3>Total Spent</h3>
+            <p class="stat-value" id="stat-total">18.99 USD</p>
+          </div>
+          <div class="stat-card">
+            <h3>Top Category</h3>
+            <p class="stat-value" id="stat-top-category">Food</p>
+          </div>
+        </div>
+        <div class="cap-box">
+          <h3>Spending cap</h3>
+          <p id="cap-status" class="cap-message cap-ok" role="status" aria-live="polite">Sample: 83.99 USD remaining</p>
+          <p id="cap-alert" class="cap-message cap-over" role="alert" aria-live="assertive"></p>
+        </div>
+        <div class="trend-box">
+          <h3>In the last 7 days</h3>
+          <div id="trend-chart" clas="trend-chart" role="img" aria-label="Sample chart of spending for the last 7 days">
+            <div class="bar-col"><span class="bar-value">5</span><div class="bar" style="height: 40%"></div><span class="bar-label">Mon</span></div>
+            <div class="bar-col"><span class="bar-value">12</span><div class="bar" style="height: 90%"></div><span class="bar-label">Tue</span></div>
+            <div class="bar-col"><span class="bar-value">0</span><div class="bar" style="height: 0%"></div><span class="bar-label">Wed</span></div>
+          </div>
+        </div>
+    </section>
+    <section id="records" class="view" aria-labelledby="records-title">
+      <h2 id="records-title">Records</h2>
+      <div class="controls">
+        <div class="field">
+          <label for="search-input">Search with a regex pattern</label>
+          <input id="search-input" type="text" autocomplete="off" placeholder="e.g. (drinks)" aria-describedby="search-status">
+        </div>
+        <div class="field field-inline">
+          <input id="search-case" type="checkbox" checked>
+          <label for="search-case">Ignore upper/lower case</label>
+        </div>
+        <div class="field">
+          <label for="sort-select">Sort by</label>
+          <select id="sort-select">
+            <option value="date-desc">Date (newest first)</option>
+            <option value="date-asc">Date (oldest first)</option>
+            <option value="description-asc">Description (A to Z)</option>
+            <option value="description-dec">Description (Z to A)</option>
+            <option value="amount-desc">Amount (high to low)</option>
+            <option value="amount-asc">Amount (low to high)</option>
+          </select>
+        </div>
+      </div>
+      <p id="search-status" class="status-text" role="status" aria-live="polite"></p>
+      <p id="empty-state" class="empty" hidden>No records yet. Add one in the Add section.</p>
+      
+      <div class="table-wrap">
+        <table id="records-table">
+          <caption class="visually-hidden">Your transactions</caption>
+          <thead>
+            <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Category</th>
+              <th scope="col">Date</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="records-body">
+            <tr>
+              <td data-label="Description">Lunch</td>
+              <td data-label="Amount">34 USD</td>
+              <td data-label="Category">Food</td>
+              <td data-label="Date">2025-09-25</td>
+              <td data-label="Actions">
+                <span class="row-actions">
+                  <button type="button" class="btn btn-small" aria-label="Edit Luch at cafeteria">Edit</button>
+                  <button type="button" class="btn btn-small btn-danger" aria-label="Delete Luch at cafeteria">Delete</button>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Description">Chemistry textbook</td>
+              <td data-label="Amount">78 USD</td>
+              <td data-label="Category">Books</td>
+              <td data-label="Date">2025-35</td>
+              <td data-label="Actions">
+                <span class="row-actions">
+                  <button type="button" class="btn btn-small" aria-label="Edit Chemistry text-book">Edit</button>
+                  <button type="button" class="btn btn-small btn-danger" aria-label="Delete Chemistry text-book">Delete</button>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="add" class="view" aria-labelledby="add-title">
+      <h2 id="add-title">Add a transaction</h2>
+      <form id="record-form" novalidate>
+        <div class="field">
+          <label for="description">Description</label>
+          <input id="description" name="description" type="text" autocomplete="off" required aria-describedby="description-hint description-error">
+          <p id="description-hint" class="hint">No space at the start or end</p>
+          <p id="description-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="amount">Amount</label>
+            <input id="amount" name="amount" type="text" inputmode="decimal" autocomplete="off" required aria-describedby="amount-hint amount-error">
+            <p id="amount-hint" class="hint">Numbers only, up to 2 decimals, for example 34.99</p>
+            <p id="amount-error" class="error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="currency">Currency</label>
+            <select id="currency" name="currency">
+              <option value="RWF">RWF</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="category">Category</label>
+          <input id="category" name="category" type="text" list="category-list" autocomplete="off" required aria-describedby="category-hint category-error">
+          <datalist id="category-list">
+            <option value="Food"></option>
+            <option value="Books"></option>
+            <option value="Transport"></option>
+            <option value="Entertainment"></option>
+            <option value="Fees"></option>
+            <option value="Other"></option>
+          </datalist>
+          <p id="category-hint" class="hint">Letters, spaces and hyphens only.</p>
+          <p id="category-error" class="error" aria-live="polite"></p>
+        </div>
+        <div class="field">
+          <label for="date">Date</label>
+          <input id="date" name="date" type="text" placeholder="YYYY-MM-DD" autocomplete="off" required aria-describedby="date-hint date-error">
+          <p id="date-hint" class="hint">Format YYYY-MM-DD, for example 2024-09-03</p>
+          <p id="date-error" class="error" aria-live="polite"></p>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Add transaction</button>
+          <button type="reset" class="btn">Clear form</button>
+        </div>
+        <p id="form-status" class="status-text" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section id="settings" class="view" aria-labelledby="settings-title">
+      <h2 id="settings-title">Settings</h2>
+      <form id="settings-form" novalidate>
+        <fieldset>
+          <legend>Currency rates</legend>
+          <p>Base currency: <strong>RWF</strong>. Enter how many RWF one unit of each currency is worth.</p>
+          <div class="field-row">
+            <div class="field">
+              <label for="rate-usd">1 USD equals (RWF)</label>
+              <input id="rate-usd" type="text" inputmode="decimal" autocomplete="off" aria-describedby="rate-usd-error">
+              <p id="rate-usd-error" class="error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="rate-eur">1 EUR equals (RWF)</label>
+              <input id="rate-eur" type="text" inputmode="decimal" autocomplete="off" aria-describedby="rate-eur-error">
+              <p id="rate-eur-error" class="error" aria-live="polite"></p>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Budget and categories</legend>
+          <div class="field">
+            <label for="cap-input">Spending cap (in RWF)</label>
+            <input id="cap-input" type="text" inputmode="decimal" autocomplete="off" aria-describedby="cap-error">
+            <p id="cap-error" class="error" aria-live="polite"></p>
+          </div>
+          <div class="field">
+            <label for="categories-input">Catgeories (separate with commas)</label>
+            <input id="categories-input" type="text" autocomplete="off" aria-describedby="categories-error">
+            <p id="categories-error" class="error" aria-live="polite"></p>
+          </div>
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Save settings</button>
+        <p id="settings-status" class="status-text" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="data-tools">
+        <h3>Your data</h3>
+        <div class="button-row">
+          <button type="button" id="export-btn" class="btn">Export JSON</button>
+          <button type="button" id="load-seed-btn" class="btn">Load sample data</button>
+          <button type="button" id="clear-btn" class="btn btn-danger">Delete all records</button>
+        </div>
+        <div class="field">
+          <label for="import-file">Import a JSON file</label>
+          <input id="import-file" type="file" accept=".json,application/json">
+        </div>
+        <p id="data-status" class="status-text" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>ALU Assignment - Building Responsive UI by Anaise Umugwaneza.</p>
+  </footer>
+</body>
+</html>
