@@ -391,3 +391,47 @@ mark{background: var(--mark); color: var(--text); padding: 0 0.1em; border-radiu
   * {animation: none !important; transition: none !important;}
 }
 
+.nav-list a[aria-current="page"] {
+  background: #ffffff;
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+
+h2:focus {
+  outline: none;
+}
+
+.bar {
+  transform-origin: bottom;
+  animation: grow 0.5s ease;
+}
+
+@keyframes grow {
+  from {transform: scaleY(0);}
+  to {transform: scaleY(1);}
+}
+
+#records-table tr.is-editing {background: #eef2ff;}
+#records-table td input[type="text"],
+#records-table td select {width: 60%; min-height: 36px;}
+.edit-pair {display: flex; gap: 0.4rem; justify-content:  flex-end; width: 70%;}
+#records-table .edit-pair input[type="text"] {width: 60%;}
+#records-table .edit-pair select { width: 40%;}
+
+@media (min-width: 768px) {
+  #records-table td input[type="text"],
+  #records-table td select {width: 100%;}
+  .edit-pair {width: 100%; justify-content: flex-start;}
+  #records-table .edit-pair input[type="text"] { width: 60%;}
+  #records-table .edit-pair select {width: 40%;}
+}
+
+.global-status {
+  max-width: 64rem;
+  margin: 0.5rem auto 0;
+  padding: 0.1rem;
+}
+
+.global-status:empty{
+  display: none;
+}
