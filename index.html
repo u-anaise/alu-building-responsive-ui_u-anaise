@@ -23,13 +23,14 @@
       </nav>
     </div>
   </header>
+  <p id="app-status" class="gloabal-status" role="status" aria-live="polite"></p>
   <main id="main" tabindex="-1">
     <section id="about" class="view" aria-labelledby="about-title">
       <h2 id="about-title">About</h2>
       <p>This is a student finance tracker site</p>
       <p>Contact me on: <a href="https://github.com/u-anaise">Github</a> or <a href="mailto:a.umugwanez@alustudent.com">email me</a></p>
     </section>
-    <section id="dashboard" class="view" aria-labelledby="dasboard-title">
+    <section id="dashboard" class="view" aria-labelledby="dashboard-title">
       <h2 id="dashboard-title">Dashboard</h2>
         <div class="stats-grid">
           <div class="stat-card">
@@ -52,7 +53,7 @@
         </div>
         <div class="trend-box">
           <h3>In the last 7 days</h3>
-          <div id="trend-chart" clas="trend-chart" role="img" aria-label="Sample chart of spending for the last 7 days">
+          <div id="trend-chart" class="trend-chart" role="img" aria-label="Sample chart of spending for the last 7 days">
             <div class="bar-col"><span class="bar-value">5</span><div class="bar" style="height: 40%"></div><span class="bar-label">Mon</span></div>
             <div class="bar-col"><span class="bar-value">12</span><div class="bar" style="height: 90%"></div><span class="bar-label">Tue</span></div>
             <div class="bar-col"><span class="bar-value">0</span><div class="bar" style="height: 0%"></div><span class="bar-label">Wed</span></div>
@@ -76,7 +77,7 @@
             <option value="date-desc">Date (newest first)</option>
             <option value="date-asc">Date (oldest first)</option>
             <option value="description-asc">Description (A to Z)</option>
-            <option value="description-dec">Description (Z to A)</option>
+            <option value="description-desc">Description (Z to A)</option>
             <option value="amount-desc">Amount (high to low)</option>
             <option value="amount-asc">Amount (low to high)</option>
           </select>
@@ -105,8 +106,8 @@
               <td data-label="Date">2025-09-25</td>
               <td data-label="Actions">
                 <span class="row-actions">
-                  <button type="button" class="btn btn-small" aria-label="Edit Luch at cafeteria">Edit</button>
-                  <button type="button" class="btn btn-small btn-danger" aria-label="Delete Luch at cafeteria">Delete</button>
+                  <button type="button" class="btn btn-small" aria-label="Edit Lunch at cafeteria">Edit</button>
+                  <button type="button" class="btn btn-small btn-danger" aria-label="Delete Lunch at cafeteria">Delete</button>
                 </span>
               </td>
             </tr>
@@ -207,7 +208,7 @@
             <p id="cap-error" class="error" aria-live="polite"></p>
           </div>
           <div class="field">
-            <label for="categories-input">Catgeories (separate with commas)</label>
+            <label for="categories-input">Categeories (separate with commas)</label>
             <input id="categories-input" type="text" autocomplete="off" aria-describedby="categories-error">
             <p id="categories-error" class="error" aria-live="polite"></p>
           </div>
