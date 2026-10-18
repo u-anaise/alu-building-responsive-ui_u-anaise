@@ -4,6 +4,7 @@ import {
 } from "./validators.js";
 import { formatAmount, roundMoney, escapeHtml, convertToBase } from "./utils.js";
 import { compileRegex, filterRecords, highlight, sortRecords } from "./search.js";
+import {totalInBase, topCategory, lastSevenDays, capStatus, toDateString } from "./stats.js";
 import { loadJson, saveJson, RECORDS_KEY, SETTINGS_KEY } from "./storage.js";
 import {
   initState, getRecords, getSettings, addRecord, updateRecord, deleteRecord,
@@ -218,6 +219,75 @@ test("sort: original list is not changed", () => {
   sortRecords(sortSample, "amount-asc", rates);
   assertEqual(ids(sortSample), "abc");
 });
+
+const statsRates = { USD: 1450, EUR: 1600 };
+test("stats: toDateString pads month and day", () => {
+  assertEqual(toDateString(new Date(2025, 0, 5)), "2025-01-05");
+  assertEqual(toDateString(new Date(2024, 11, 31)), "2024-12-31");
+});
+test("stats: total converts currencies and avoids float errors", () => {
+  const records = [
+    Object.assign({}, goodRecord, { amount: 10, currency: "USD" }),
+    Object.assign({}, goodRecord, { id: "txn_0002", amount: 2000, currency: "RWF" })
+  ];
+  assertEqual(totalInBase(records, statsRates), 16500);
+  assertEqual(totalInBase([], statsRates), 0);
+  const tiny = [
+    Object.assign({}, goodRecord, { amount: 0.1, currency: "RWF" }),
+    Object.assign({}, goodRecord, { id: "txn_0002", amount: 0.2, currency: "RWF" })
+  ];
+  assertEqual(totalInBase(tiny, statsRates), 0.3);
+});
+test("stats: top category uses converted amounts", () => {
+  const records = [
+    Object.assign({}, goodRecord, { amount: 5000, currency: "RWF", category: "Food" }),
+    Object.assign({}, goodRecord, { id: "txn_0002", amount: 10, currency: "USD", category: "Books" })
+  ];
+  assertSame(topCategory(records, statsRates), { name: "Books", total: 14500 });
+});
+test("stats: top category is null with no records", () => assertEqual(topCategory([], statsRates), null));
+test("stats: a category named like an object property is safe", () => {
+  const records = [Object.assign({}, goodRecord, { amount: 5, currency: "RWF", category: "constructor" })];
+  assertSame(topCategory(records, statsRates), { name: "constructor", total: 5 });
+});
+test("stats: last 7 days covers 7 days across a year change", () => {
+  const days = lastSevenDays([], statsRates, new Date(2025, 0, 3));
+  assertEqual(days.length, 7);
+  assertEqual(days[0].date, "2024-12-28");
+  assertEqual(days[6].date, "2025-01-03");
+  assertEqual(days[6].label, "Fri");
+});
+test("stats: last 7 days counts only records inside the window", () => {
+  const today = new Date(2025, 0, 3);
+  const make = (id, date, amount) => Object.assign({}, goodRecord, { id: id, date: date, amount: amount, currency: "RWF" });
+  const records = [
+    make("a", "2024-12-27", 100),
+    make("b", "2024-12-28", 200),
+    make("c", "2025-01-03", 300),
+    make("d", "2025-01-03", 50),
+    make("e", "2025-01-04", 999)
+  ];
+  const days = lastSevenDays(records, statsRates, today);
+  assertEqual(days[0].total, 200);
+  assertEqual(days[6].total, 350);
+  assertEqual(days.reduce((sum, day) => sum + day.total, 0), 550);
+});
+test("cap: 0 means no cap", () => assertEqual(capStatus(5000, 0, "RWF").state, "none"));
+test("cap: under the cap is polite and shows what is left", () => {
+  const result = capStatus(1000, 5000, "RWF");
+  assertEqual(result.over, false);
+  assertEqual(result.message, "4000 RWF remaining of your 5000 RWF cap.");
+});
+test("cap: exactly at the cap is not over", () => {
+  assertEqual(capStatus(5000, 5000, "RWF").over, false);
+  assertEqual(capStatus(5000, 5000, "RWF").message, "0 RWF remaining of your 5000 RWF cap.");
+});
+test("cap: over the cap shows the overage", () => {
+  const result = capStatus(5000.5, 5000, "RWF");
+  assertEqual(result.over, true);
+  assertEqual(result.message, "Over your cap by 0.50 RWF.");
+});
+
 const backupRecords = localStorage.getItem(RECORDS_KEY);
 const backupSettings = localStorage.getItem(SETTINGS_KEY);
 try {
