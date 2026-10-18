@@ -1,0 +1,17 @@
+[
+  {"id": "txn_0001", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },  
+  {"id": "txn_0002", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0003", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0004", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0005", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0006", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0007", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0008", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0009", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0010", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0011", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0012", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0013", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0014", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" },
+  {"id": "txn_0015", "description": "Lunch at cafeteria", "amount": 2500, "currency": "RWF", "category": "Food", "date": "2025-09-25", "createdAt": "2025-09-25T10:00:00.000Z", "updatedAt": "2025-09-25T10:00:00.000Z" }
+]

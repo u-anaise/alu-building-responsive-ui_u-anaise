@@ -1,0 +1,25 @@
+body{
+  font-family: system-ui, "Segoe UI", Arial, sans-serif; 
+  max-width: 50rem;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  line-height: 1.5;
+  color: #1b1f24;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+.pass {
+  color: #166534;
+}
+
+.fail{
+  color: #b00020;
+  font-weight: 700;
+}
