@@ -1,9 +1,9 @@
-#Student Finance Tracker
+# Student Finance Tracker
 
 A budget tracker for students, built with vanilla HTML, CSS and JavaScript for the ALU Building Responsive UI assignment.
 
 - Live site: https://u-anaise.github.io/alu-building-responsive-ui_u-anaise/
-- Demo video:  
+- Demo video:  https://youtu.be/3kUDvmFydY4?si=BQoyiaCvBCRdgmWu
 - Theme: Student Finance Tracker
 
 ## How I built it
@@ -110,7 +110,8 @@ scripts/search.js      regex search, highlighting and sorting
 scripts/stats.js       totals, top category, 7-day data and cap
 scripts/utils.js       small helpers
 scripts/tests.js       the checks that tests.html runs
-docs/spec.md           data model, wireframes and accessibility plan
+docs/spec.md           
+```
 
 ## Credits
 
