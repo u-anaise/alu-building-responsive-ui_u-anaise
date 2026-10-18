@@ -5,12 +5,13 @@
   --muted: #4b5563;
   --border: #6b7280;
   --line: #d1d5db;
-  --primary: #1d4ed8;
-  --primary-dark: #1e3a8a;
+  --primary: #0f6f6f;
+  --primary-dark: #054949;
   --danger: #b00020;
   --ok: #166534;
   --mark: #ffe066;
   --radius: 8px;
+  --accent-color: var(--primary);
 }
 
 *, *::before, *::after {
@@ -411,7 +412,7 @@ h2:focus {
   to {transform: scaleY(1);}
 }
 
-#records-table tr.is-editing {background: #eef2ff;}
+#records-table tr.is-editing {background: #f7fbfb;}
 #records-table td input[type="text"],
 #records-table td select {width: 60%; min-height: 36px;}
 .edit-pair {display: flex; gap: 0.4rem; justify-content:  flex-end; width: 70%;}
@@ -428,8 +429,8 @@ h2:focus {
 
 .global-status {
   max-width: 64rem;
-  margin: 0.5rem auto 0;
-  padding: 0.1rem;
+  margin: 0.5rem 0 0;
+  /* padding: 0.1rem; */
 }
 
 .global-status:empty{
