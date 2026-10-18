@@ -13,6 +13,7 @@
   --radius: 8px;
   --accent-color: var(--primary);
 }
+/*  */
 
 *, *::before, *::after {
   box-sizing: border-box;
