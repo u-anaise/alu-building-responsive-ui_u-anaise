@@ -8,7 +8,7 @@ A budget tracker for students, built with vanilla HTML, CSS and JavaScript for t
 
 ## How I built it
 
-I started by listing every requirement in the assignment and the rubric, then built the project in the order of the milestones, M1 to M7. I wrote the data model, wireframes and accessibility plan first (`docs/spec.md`), then the validation rules and the tests, then the interface. I picked the finance theme first, and when I compared the three themes it still made the most sense. It had the most starter material, and the spending cap fits a budget naturally. I chose RWF as the base currency with USD and EUR, and I picked the teal colors myself.
+I started by listing every requirement in the assignment and the rubric, chose the finance theme first, and then built the project in the order of the milestones, M1 to M7, the validation rules and the tests, then the interface. I chose RWF as the base currency with USD and EUR.
 
 ## Features
 
@@ -91,8 +91,6 @@ The search box refuses patterns longer than 100 characters, and patterns with a 
 - The chart is exposed as an image with a text summary of the seven days.
 - I checked text contrast by calculation. White on the teal buttons is 5.96 to 1, and the body text on the page background is about 15 to 1.
 - Animations stop when the user asks for reduced motion, and zooming is not blocked.
-- Lighthouse accessibility score: <<WRITE THE PAGES AND DEVICES YOU RAN IT ON AND THE SCORES>>.
-- Manual checks I did: <<LIST ONLY WHAT YOU REALLY DID, FOR EXAMPLE KEYBOARD ONLY, 200 PERCENT ZOOM, NARRATOR>>.
 
 The sort and currency dropdowns and the category suggestions use the browser's own styling, so I could not change their colors.
 

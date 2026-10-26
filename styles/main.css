@@ -235,8 +235,11 @@ mark{background: var(--mark); color: var(--text); padding: 0 0.1em; border-radiu
 
 .cap-message{
   margin: 0 0 0.5rem; 
-  padding: 0.5rem 0.75rem;
-  border-radius: var(--radius);
+  /* padding: 0.5rem 0.75rem; */
+  /* border-radius: var(--radius); */
+  border-radius: 4px;
+  display: flex;
+  /* justify-content: center; */
   font-weight: 600;
 }
 
@@ -244,8 +247,10 @@ mark{background: var(--mark); color: var(--text); padding: 0 0.1em; border-radiu
   display: none;
 }
 
-.cap-ok{color: var(--ok); background: #ecfdf3;}
-.cap-over{color: var(--danger); background: #fdecee;}
+/* .cap-ok{color: var(--ok); background: #ecfdf3;} */
+/* .cap-over{color: var(--danger); background: #fdecee;} */
+.cap-ok{color: var(--ok);}
+.cap-over{ color: var(--danger);}
 
 .trend-chart{
   display:flex;
